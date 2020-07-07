@@ -1,7 +1,11 @@
 #ifndef Properties_BU
 #define Properties_BU
 
-#include "Core.hpp"
+#ifndef NOT_BU_PROJECT
+    #include "Core.hpp"
+#else
+    #include "ProgramStructure.cpp"
+#endif
 
 namespace ulm{
     class Properties{
@@ -9,7 +13,9 @@ namespace ulm{
             static Program * current;
             static bool change;
             
-            static Program * onStart();
+            #ifndef NOT_BU_PROJECT
+                static Program * onStart();
+            #endif
             static void handleError(String error);
 
             static String storagePath;
@@ -19,12 +25,17 @@ namespace ulm{
                 change = true;
             }
 
+            #ifndef NOT_BU_PROJECT
+
             static String getResourcePath(const char * path){
                 return(storagePath + BU_APP_NAME + "_resources/" + path);
             }
+
             static String getResourcePath(String path){
                 return getResourcePath(path.getPtr());
             }
+
+            #endif
 
             static void handleError(const char * error){
                 handleError(String(error));

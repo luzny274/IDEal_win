@@ -4,6 +4,8 @@
 #include "../SDL2/include/SDL.h"
 #include "Core.hpp"
 
+#ifndef NOT_BU_PROJECT
+
 void ulm::Window::initialize(const char* title, int w, int h){
     SDL_GLContext context;
 
@@ -86,6 +88,7 @@ void ulm::Window::initialize(const char* title, int w, int h){
 
     setVSync(true);
 }
+#endif
 
 void ulm::Window::resizeGL(int w, int h){
     glViewport(DefaultFrameBuffer::x, DefaultFrameBuffer::y, w, h);

@@ -13,11 +13,11 @@
 
 namespace ulm{
 
-    enum WindowMode{ WINDOWED = 0, FULLSCREEN = 1, FULLSCREEN_DESKTOP = 2};
-    struct MOUSE{ int x, y, dx, dy; bool relativeMode; };
-    struct WHEEL{ int dx, dy; };
+    enum WindowMode   { WINDOWED = 0, FULLSCREEN = 1, FULLSCREEN_DESKTOP = 2 };
+    struct MOUSE      { int x, y, dx, dy; bool relativeMode;                 };
+    struct WHEEL      { int dx, dy;                                          };
 
-    struct CONTROLLER{  bool isPlugged = false;
+    struct CONTROLLER { bool isPlugged = false;
                         float lX, lY;
                         float rX, rY;
                         float triggerLeft, triggerRight;
@@ -53,7 +53,10 @@ namespace ulm{
             static char keysPressed[NUM_SCANCODES], keysDown[NUM_SCANCODES], keysUp[NUM_SCANCODES];
             static char textInput[ULM_UTF_SIZE];
 
+            #ifndef NOT_BU_PROJECT
             static void initialize(const char* title, int w, int h);
+            #endif
+
             static void resizeGL(int width, int height);
             static void swap();
 

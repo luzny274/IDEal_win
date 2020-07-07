@@ -3,6 +3,7 @@
 
 /* Dependancy */
 #include "../../Base/base.hpp"
+#include "../../Graphics/Core/Properties.cpp"
 
 /* Inclusion */ 
 #include "GLM_Base.hpp"

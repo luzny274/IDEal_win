@@ -70,16 +70,22 @@ namespace ulm{
                     this->add(Couple<Key, Value>(key, vals[i]));
             }
 
+            
+
             Value getByKey(Key key){
                 for(int i = 0; i < this->size; i++)
                     if(this->array[i].key() == key)
                         return this->array[i].value();
+
+                return Value();
             }
 
             Key getByValue(Value val){
                 for(int i = 0; i < this->size; i++)
                     if(this->array[i].value() == val)
                         return this->array[i].key();
+
+                return Key();
             }
     };
 }

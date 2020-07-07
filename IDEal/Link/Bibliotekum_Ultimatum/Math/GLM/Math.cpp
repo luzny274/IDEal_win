@@ -86,6 +86,10 @@ namespace ulm{
                     return false;
             }
 
+            template<typename typ> static int sgn(typ val){
+                return (typ(0) < val) - (val < typ(0));
+            }
+
             template<typename typ> static void swap(typ * p1, typ * p2){
                 typ pom = *p1;
                 *p1 = *p2;

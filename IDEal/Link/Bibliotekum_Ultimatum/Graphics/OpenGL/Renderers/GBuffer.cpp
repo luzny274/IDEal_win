@@ -17,17 +17,17 @@ namespace ulm{
         }
         void initialize(glm::ivec2 size){ initialize(size.x, size.y); }
 
-        Texture getResult()             { return(outputBuffer.colorTextures[0]);     }
+        Texture getResult()             { return(outputBuffer.colorTextures[0]);   }
 
-        Texture getDepthTexture()       { return(frameBuffer.depthStencilTexture);     }
-        Texture getColorTexture()       { return(frameBuffer.colorTextures[0]); }      
-        Texture getAlbedoTexture()   { return(frameBuffer.colorTextures[1]); }
-        Texture getNormalVecTexture()   { return(frameBuffer.colorTextures[2]); }
+        Texture getDepthTexture()       { return(frameBuffer.depthStencilTexture); }
+        Texture getColorTexture()       { return(frameBuffer.colorTextures[0]);    }      
+        Texture getAlbedoTexture()      { return(frameBuffer.colorTextures[1]);    }
+        Texture getNormalVecTexture()   { return(frameBuffer.colorTextures[2]);    }
 
         void bind()     { frameBuffer.bind();    }
         void unbind()   { frameBuffer.unbind();  }
 
-        void clear() {clear(glm::vec3(0.f));}
+        void clear()    { clear(glm::vec3(0.f)); }
 
         void clear(glm::vec3 color) {
             outputBuffer.bind();

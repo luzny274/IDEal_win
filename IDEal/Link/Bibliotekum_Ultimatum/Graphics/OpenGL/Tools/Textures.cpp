@@ -239,7 +239,7 @@ namespace ulm{
 
         originalSize = glm::ivec2(image.width, image.height);
 
-        /* OpenGL likes textures with sides with length power of two */
+        /* OpenGL likes textures with sides of length power of two */
         round(roundMode);
         
 
@@ -247,7 +247,6 @@ namespace ulm{
         if(!mipmapping) numLevels = 1;
         Image mipmap = image;
         
-        /* glGenerateMipmap(GL_TEXTURE_2D); */
         for (int i = 0; i < numLevels; i++) {
             if(mipmap.nrChannels == 4) glTexImage2D(GL_TEXTURE_2D, i, GL_RGBA, mipmap.width, mipmap.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, mipmap.data);
             if(mipmap.nrChannels == 3) glTexImage2D(GL_TEXTURE_2D, i, GL_RGB,  mipmap.width, mipmap.height, 0, GL_RGB,  GL_UNSIGNED_BYTE, mipmap.data);        
@@ -263,7 +262,7 @@ namespace ulm{
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
-        if(mipmapping && texMode == LINEAR) glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+        if(mipmapping && texMode == LINEAR) glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
         else if(mipmapping && texMode == NEAREST) glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
         else if(!mipmapping && texMode == LINEAR) glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         else if(!mipmapping && texMode == NEAREST) glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);

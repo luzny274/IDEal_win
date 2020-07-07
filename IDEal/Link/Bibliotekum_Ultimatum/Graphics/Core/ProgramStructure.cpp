@@ -2,6 +2,7 @@
 #define BU_PROGRAM_STRUCTURE
 
 #include "../../Base/base.hpp"
+#include "../../Tools/Tools.hpp"
 
 namespace ulm{
 
