@@ -27,10 +27,8 @@ namespace ulm{
                 Array<unsigned int> indices = {0, 3, 1, 0, 3, 2};
                 ST_va.setBuffers(indices, vertices, attr);
 
-                code = String(R"====(#version 100
-                                #ifdef GL_ES
-                                    precision mediump float;
-                                #endif
+                code = String(R"====(#version 330
+                            
                                 )====") + code;
                                 
                 initialize(ST_vertex, code.getPtr());
@@ -239,19 +237,19 @@ namespace ulm{
     float               Renderer2D::ZNear = 0.1f;
     float               Renderer2D::ZFar = 1000.0f;
 
-    class STCodeExamples{
+    /*class STCodeExamples{
         public:
 
-            /* uniform names: pozice, polomer, tloustka, barvicka */
+            // uniform names: pozice, polomer, tloustka, barvicka
             static String circle;
 
-            /* uniform names: pozice, polomer, barvicka */
+            // uniform names: pozice, polomer, barvicka
             static String filledCircle;
 
-            /* missing definition of macro PALETTE_SIZE, uniform names: center, scale, iter, palette[PALETTE_SIZE]*/
+            // missing definition of macro PALETTE_SIZE, uniform names: center, scale, iter, palette[PALETTE_SIZE]
             static String Mandelbrot;
 
-            /* missing definition of macro PALETTE_SIZE, uniform names: seed, center, iter, scale, palette[PALETTE_SIZE]*/
+            // missing definition of macro PALETTE_SIZE, uniform names: seed, center, iter, scale, palette[PALETTE_SIZE]
             static String JuliaSet;
     };
 
@@ -352,7 +350,7 @@ namespace ulm{
 
                     float pomer = (float(i2) - cislo * float(PALETTE_SIZE - 1));
                     gl_FragColor = mix(palette[i1], palette[i2], 1.0 - pomer);
-                })====";
+                })====";*/
 
 
     /* 2D renderer shader */
@@ -430,14 +428,11 @@ namespace ulm{
     /* 2DShaderToy vertex */
 
     const char * ShaderToy::ST_vertex = R"====(
-                                        #version 100
-                                        #ifdef GL_ES
-                                            precision mediump float;
-                                        #endif
+                                        #version 330
 
-                                        attribute vec2 vertex;
+                                        layout(location = 0) in vec2 vertex;
 
-                                        varying vec2 position;
+                                        out vec2 position;
                                         
                                         uniform vec2 BU_pos;
                                         uniform vec2 BU_size;
